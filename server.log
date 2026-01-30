@@ -1,0 +1,6 @@
+127.0.0.1 - - [30/Jan/2026 20:51:43] "HEAD /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 20:53:07] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 20:53:08] "GET /assets/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 20:53:08] "GET /js/quiz.js HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 20:53:10] code 404, message File not found
+127.0.0.1 - - [30/Jan/2026 20:53:10] "GET /favicon.ico HTTP/1.1" 404 -

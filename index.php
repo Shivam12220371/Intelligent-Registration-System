@@ -1,0 +1,122 @@
+<?php
+// index.php - Single file entry (no backend required).
+?>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic Quiz Application</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>Dynamic Quiz Application</h1>
+      <p class="lead">Choose a category and difficulty, then test your knowledge under time pressure.</p>
+    </header>
+
+    <section id="setup" class="card">
+      <h2>Setup your quiz</h2>
+      <div class="controls">
+        <label>
+          Category
+          <select id="categorySelect">
+            <option value="all">All Categories</option>
+          </select>
+        </label>
+
+        <label>
+          Difficulty
+          <select id="difficultySelect">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+
+        <label>
+          Questions
+          <input id="numQuestions" type="number" min="3" max="20" value="8">
+        </label>
+
+        <div class="actions">
+          <button id="startBtn" class="btn primary">Start Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="card hidden">
+      <div class="quiz-header">
+        <div id="progress">Question <span id="currentIndex">1</span> / <span id="totalQ">0</span></div>
+        <div id="timer" class="timer">
+          <svg viewBox="0 0 36 36" class="circular-chart">
+            <path class="circle-bg" d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <path id="timerCircle" class="circle" stroke-dasharray="100, 100" d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <text x="18" y="20.35" class="timer-text" id="timerText">00:00</text>
+          </svg>
+        </div>
+      </div>
+
+      <div id="questionCard" class="question-card">
+        <h3 id="questionText">Question text</h3>
+        <ul id="optionsList" class="options-list"></ul>
+      </div>
+
+      <div class="nav">
+        <button id="prevBtn" class="btn">Previous</button>
+        <button id="nextBtn" class="btn primary">Next</button>
+        <button id="submitBtn" class="btn success">Finish & Submit</button>
+      </div>
+    </section>
+
+    <section id="results" class="card hidden">
+      <h2>Results</h2>
+      <div class="summary">
+        <div><strong>Total Questions:</strong> <span id="resTotal">0</span></div>
+        <div><strong>Correct:</strong> <span id="resCorrect">0</span></div>
+        <div><strong>Incorrect:</strong> <span id="resIncorrect">0</span></div>
+        <div><strong>Score:</strong> <span id="resPercent">0%</span></div>
+        <div><strong>Total Time Spent:</strong> <span id="resTime">0s</span></div>
+      </div>
+
+      <div class="charts">
+        <div class="chart-card">
+          <h3>Correct vs Incorrect</h3>
+          <canvas id="pieChart" width="400" height="200"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Time Spent per Question (s)</h3>
+          <canvas id="barChart" width="800" height="200"></canvas>
+        </div>
+      </div>
+
+      <div class="detail-list">
+        <h3>Per-question details</h3>
+        <table id="detailTable">
+          <thead>
+            <tr><th>#</th><th>Question</th><th>Your Answer</th><th>Correct Answer</th><th>Time (s)</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button id="retakeBtn" class="btn">Take Another Quiz</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>Built with PHP, JavaScript, HTML & CSS • No backend storage • Charts by Chart.js</small>
+    </footer>
+  </main>
+
+  <script src="js/quiz.js"></script>
+</body>
+</html>
